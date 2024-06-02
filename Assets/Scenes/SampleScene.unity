@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryLife: 7
   batteryText: {fileID: 757169838}
+  incrementInterval: 0.1
+  incrementAmount: 1
 --- !u!4 &66280538
 Transform:
   m_ObjectHideFlags: 0
@@ -397,7 +399,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 35
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -557,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -435.67, y: 156.33}
+  m_AnchoredPosition: {x: -1180, y: 695}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757169838
@@ -607,8 +609,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -981,7 +983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME OVER
+  m_text: Game Over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1145,7 +1147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1247054021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b28f01693f86df4889f63242bff47fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   batteryManager: {fileID: 66280537}
 --- !u!50 &1753928316
 Rigidbody2D:
@@ -1561,9 +1563,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 7721278976176785661, guid: b138df6a7b090ce49881ec19414bce9c, type: 3}
-  gridWidth: 10
-  gridHeight: 10
+  gridWidth: 100
+  gridHeight: 100
   tileSize: 1
+  noiseScale: 0.1
+  threshold: 0.3
 --- !u!4 &1926104384
 Transform:
   m_ObjectHideFlags: 0
