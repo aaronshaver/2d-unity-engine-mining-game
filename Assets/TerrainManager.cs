@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class TerrainManager : MonoBehaviour
 {
     public GameObject tilePrefab;
     public int gridWidth = 21;

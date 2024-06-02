@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f64946b46b9ec34e9cfe62a52229f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryLife: 4
+  batteryLife: 3
   batteryText: {fileID: 757169838}
 --- !u!4 &66280538
 Transform:
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 1359243275}
   - component: {fileID: 1359243274}
   m_Layer: 5
-  m_Name: StatsCanvas
+  m_Name: StatsUIBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1541,7 +1541,7 @@ GameObject:
   - component: {fileID: 1926104384}
   - component: {fileID: 1926104383}
   m_Layer: 0
-  m_Name: GridManager
+  m_Name: TerrainManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

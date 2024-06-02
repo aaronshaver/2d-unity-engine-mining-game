@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
-        Debug.Log("PlayerMovement Start: isGameOver = " + GameStateManager.Instance.isGameOver);
     }
 
     void Update()
