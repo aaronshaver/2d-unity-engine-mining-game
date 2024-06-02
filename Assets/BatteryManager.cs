@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class BatteryManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class BatteryManager : MonoBehaviour
     private int initialBatteryLife;
     private float timer = 0;
     public TextMeshProUGUI batteryText;
+    public float incrementInterval = 0.1f; // 100 milliseconds
+    public int incrementAmount = 1;
 
     void Start()
     {
@@ -36,9 +39,23 @@ public class BatteryManager : MonoBehaviour
 
     public void ResetBattery()
     {
-        batteryLife = initialBatteryLife;
         timer = 0;
-        UpdateBatteryText();
+        StopAllCoroutines(); // Stop any existing coroutine
+        StartCoroutine(IncreaseBatteryLifeGradually());
+    }
+
+    private IEnumerator IncreaseBatteryLifeGradually()
+    {
+        while (batteryLife < initialBatteryLife)
+        {
+            batteryLife += incrementAmount;
+            if (batteryLife > initialBatteryLife)
+            {
+                batteryLife = initialBatteryLife;
+            }
+            UpdateBatteryText();
+            yield return new WaitForSeconds(incrementInterval);
+        }
     }
 
     private void UpdateBatteryText()

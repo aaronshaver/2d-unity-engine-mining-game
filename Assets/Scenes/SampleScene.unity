@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f64946b46b9ec34e9cfe62a52229f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryLife: 3
+  batteryLife: 7
   batteryText: {fileID: 757169838}
 --- !u!4 &66280538
 Transform:
@@ -1379,6 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  batteryManager: {fileID: 66280537}
 --- !u!50 &1753928316
 Rigidbody2D:
   serializedVersion: 4

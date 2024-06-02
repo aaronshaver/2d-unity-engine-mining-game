@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rbody;
     private Vector2 movement;
+    public BatteryManager batteryManager;
 
     void Start()
     {
@@ -24,5 +25,9 @@ public class PlayerMovement : MonoBehaviour
         if (GameStateManager.Instance.isGameOver) return;
 
         rbody.MovePosition(rbody.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (rbody.position.y > 0)
+        {
+            batteryManager.ResetBattery(); // Reset battery
+        }
     }
 }
