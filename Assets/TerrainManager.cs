@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class TerrainManager : MonoBehaviour
 {
-    public GameObject basicDirt;
+    public GameObject basicDirtPrefab;
+    public ObjectPool objectPool;
 
     public float minNoiseScale = 0.05f;
     public float maxNoiseScale = 0.2f;
@@ -16,7 +17,7 @@ public class TerrainManager : MonoBehaviour
     public int chunkWidth = 21;
     public int chunkHeight = 21;
     public float tileSize = 1.0f;
-    public Transform player;  // Reference to the player
+    public Transform player;
 
     private Dictionary<Vector2Int, GameObject> chunks = new Dictionary<Vector2Int, GameObject>();
 
@@ -83,7 +84,7 @@ public class TerrainManager : MonoBehaviour
                 if (perlinValue > threshold)
                 {
                     Vector2 tilePosition = new Vector2(worldX, worldY);
-                    Instantiate(basicDirt, tilePosition, Quaternion.identity);
+                    objectPool.GetObject(tilePosition);
                 }
             }
         }

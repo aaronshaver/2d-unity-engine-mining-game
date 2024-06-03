@@ -525,6 +525,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &682630841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682630843}
+  - component: {fileID: 682630842}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &682630842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682630841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253e038dd8b5e1c458ac038ce4d05a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 7721278976176785661, guid: b138df6a7b090ce49881ec19414bce9c, type: 3}
+  initialSize: 10
+--- !u!4 &682630843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682630841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1094.5781, y: 929.244, z: -5.3456755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757169836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b28f01693f86df4889f63242bff47fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 10
   batteryManager: {fileID: 66280537}
 --- !u!50 &1753928316
 Rigidbody2D:
@@ -1533,6 +1579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1360df329b3097348b2d24af379d937c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPool: {fileID: 682630842}
 --- !u!1 &1926104382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8ff6993b058b7408ccc9e03a95ac80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDirt: {fileID: 7721278976176785661, guid: b138df6a7b090ce49881ec19414bce9c, type: 3}
+  basicDirtPrefab: {fileID: 0}
+  objectPool: {fileID: 682630842}
   minNoiseScale: 0.05
   maxNoiseScale: 0.15
   minThreshold: 0.25
@@ -1599,3 +1647,4 @@ SceneRoots:
   - {fileID: 66280538}
   - {fileID: 210542793}
   - {fileID: 1247054024}
+  - {fileID: 682630843}
