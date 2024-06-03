@@ -4,10 +4,10 @@ public class TerrainManager : MonoBehaviour
 {
     public GameObject basicDirt;
 
-    [SerializeField] private float minNoiseScale = 0.05f;
-    [SerializeField] private float maxNoiseScale = 0.2f;
-    [SerializeField] private float minThreshold = 0.4f;
-    [SerializeField] private float maxThreshold = 0.6f;
+    public float minNoiseScale = 0.05f;
+    public float maxNoiseScale = 0.2f;
+    public float minThreshold = 0.4f;
+    public float maxThreshold = 0.6f;
 
     private float noiseScale;
     private float threshold;
