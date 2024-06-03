@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour
 {
-    public GameObject tilePrefab;
+    public GameObject basicDirt;
+
+    [SerializeField] private float minNoiseScale = 0.05f;
+    [SerializeField] private float maxNoiseScale = 0.2f;
+    [SerializeField] private float minThreshold = 0.4f;
+    [SerializeField] private float maxThreshold = 0.6f;
+
+    private float noiseScale;
+    private float threshold;
+
     public int gridWidth = 21;
     public int gridHeight = 21;
     public float tileSize = 1.0f;
-    public float noiseScale = 0.1f;
-    public float threshold = 0.5f;
 
     void Start()
     {
+        noiseScale = Random.Range(minNoiseScale, maxNoiseScale);
+        threshold = Random.Range(minThreshold, maxThreshold);
         GenerateGrid();
     }
 
@@ -29,7 +38,7 @@ public class TerrainManager : MonoBehaviour
                 if (perlinValue > threshold)
                 {
                     Vector2 tilePosition = new Vector2(x * tileSize, y * tileSize);
-                    Instantiate(tilePrefab, tilePosition, Quaternion.identity);
+                    Instantiate(basicDirt, tilePosition, Quaternion.identity);
                 }
             }
         }

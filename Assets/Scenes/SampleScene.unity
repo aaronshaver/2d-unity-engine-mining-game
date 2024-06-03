@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 1753928320}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1562,12 +1562,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8ff6993b058b7408ccc9e03a95ac80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 7721278976176785661, guid: b138df6a7b090ce49881ec19414bce9c, type: 3}
+  basicDirt: {fileID: 7721278976176785661, guid: b138df6a7b090ce49881ec19414bce9c, type: 3}
+  minNoiseScale: 0.05
+  maxNoiseScale: 0.15
+  minThreshold: 0.25
+  maxThreshold: 0.35
   gridWidth: 100
   gridHeight: 100
   tileSize: 1
-  noiseScale: 0.1
-  threshold: 0.3
 --- !u!4 &1926104384
 Transform:
   m_ObjectHideFlags: 0
