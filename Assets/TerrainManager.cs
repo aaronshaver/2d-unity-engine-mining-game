@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TerrainManager : MonoBehaviour
 {
@@ -12,35 +13,67 @@ public class TerrainManager : MonoBehaviour
     private float noiseScale;
     private float threshold;
 
-    public int gridWidth = 21;
-    public int gridHeight = 21;
+    public int chunkWidth = 21;
+    public int chunkHeight = 21;
     public float tileSize = 1.0f;
+    public Transform player;  // Reference to the player
+
+    private Dictionary<Vector2Int, GameObject> chunks = new Dictionary<Vector2Int, GameObject>();
 
     void Start()
     {
         noiseScale = Random.Range(minNoiseScale, maxNoiseScale);
         threshold = Random.Range(minThreshold, maxThreshold);
-        GenerateGrid();
+
+        // Generate initial line of chunks below the player
+        for (int i = -1; i <= 1; i++)
+        {
+            GenerateChunk(i, -1);
+        }
     }
 
-    void GenerateGrid()
+    void Update()
     {
-        int randomSeed = System.DateTime.Now.Millisecond;
-        System.Random random = new System.Random(randomSeed);
-        float offsetX = random.Next(0, 10000);
-        float offsetY = random.Next(0, 10000);
+        Vector2Int playerChunk = new Vector2Int(
+            Mathf.FloorToInt(player.position.x / (chunkWidth * tileSize)),
+            Mathf.FloorToInt(player.position.y / (chunkHeight * tileSize))
+        );
 
-        for (int x = -(gridWidth / 2); x < gridWidth / 2; x++)
+        for (int x = -1; x <= 1; x++)
         {
-            for (int y = -gridHeight; y < 0; y++)
+            for (int y = -1; y <= 0; y++)
             {
-                float perlinValue = Mathf.PerlinNoise((x * noiseScale) + offsetX, (y * noiseScale) + offsetY);
+                Vector2Int chunkCoord = playerChunk + new Vector2Int(x, y);
+                if (!chunks.ContainsKey(chunkCoord))
+                {
+                    GenerateChunk(chunkCoord.x, chunkCoord.y);
+                }
+            }
+        }
+    }
+
+    void GenerateChunk(int chunkX, int chunkY)
+    {
+        float offsetX = Random.Range(0, 10000);
+        float offsetY = Random.Range(0, 10000);
+
+        for (int x = 0; x < chunkWidth; x++)
+        {
+            for (int y = 0; y < chunkHeight; y++)
+            {
+                float worldX = (chunkX * chunkWidth + x) * tileSize;
+                float worldY = (chunkY * chunkHeight + y) * tileSize;
+                if (worldY >= 0) continue; // Skip generation above y == 0
+
+                float perlinValue = Mathf.PerlinNoise((worldX * noiseScale) + offsetX, (worldY * noiseScale) + offsetY);
                 if (perlinValue > threshold)
                 {
-                    Vector2 tilePosition = new Vector2(x * tileSize, y * tileSize);
+                    Vector2 tilePosition = new Vector2(worldX, worldY);
                     Instantiate(basicDirt, tilePosition, Quaternion.identity);
                 }
             }
         }
+
+        chunks[new Vector2Int(chunkX, chunkY)] = null; // Track the generated chunk
     }
 }

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f64946b46b9ec34e9cfe62a52229f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryLife: 7
+  batteryLife: 100
   batteryText: {fileID: 757169838}
   incrementInterval: 0.1
   incrementAmount: 1
@@ -399,7 +399,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 35
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1567,9 +1567,10 @@ MonoBehaviour:
   maxNoiseScale: 0.15
   minThreshold: 0.25
   maxThreshold: 0.35
-  gridWidth: 100
-  gridHeight: 100
+  chunkWidth: 21
+  chunkHeight: 21
   tileSize: 1
+  player: {fileID: 1753928319}
 --- !u!4 &1926104384
 Transform:
   m_ObjectHideFlags: 0
