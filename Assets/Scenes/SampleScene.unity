@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b28f01693f86df4889f63242bff47fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 30
   batteryManager: {fileID: 66280537}
 --- !u!50 &1753928316
 Rigidbody2D:

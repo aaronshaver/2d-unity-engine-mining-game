@@ -25,11 +25,8 @@ public class TerrainManager : MonoBehaviour
         noiseScale = Random.Range(minNoiseScale, maxNoiseScale);
         threshold = Random.Range(minThreshold, maxThreshold);
 
-        // Generate initial line of chunks below the player
-        for (int i = -1; i <= 1; i++)
-        {
-            GenerateChunk(i, -1);
-        }
+        // Generate initial chunks around the player
+        GenerateInitialChunks();
     }
 
     void Update()
@@ -41,13 +38,30 @@ public class TerrainManager : MonoBehaviour
 
         for (int x = -1; x <= 1; x++)
         {
-            for (int y = -1; y <= 0; y++)
+            for (int y = -1; y <= 1; y++)
             {
                 Vector2Int chunkCoord = playerChunk + new Vector2Int(x, y);
                 if (!chunks.ContainsKey(chunkCoord))
                 {
                     GenerateChunk(chunkCoord.x, chunkCoord.y);
                 }
+            }
+        }
+    }
+
+    void GenerateInitialChunks()
+    {
+        Vector2Int playerChunk = new Vector2Int(
+            Mathf.FloorToInt(player.position.x / (chunkWidth * tileSize)),
+            Mathf.FloorToInt(player.position.y / (chunkHeight * tileSize))
+        );
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 0; y++)
+            {
+                Vector2Int chunkCoord = playerChunk + new Vector2Int(x, y);
+                GenerateChunk(chunkCoord.x, chunkCoord.y);
             }
         }
     }
